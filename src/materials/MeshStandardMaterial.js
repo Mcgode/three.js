@@ -71,6 +71,7 @@ function MeshStandardMaterial( parameters ) {
 	this.lightMapIntensity = 1.0;
 
 	this.aoMap = null;
+	this.ssaoMap = null;
 	this.aoMapIntensity = 1.0;
 
 	this.emissive = new Color( 0x000000 );
@@ -135,6 +136,7 @@ MeshStandardMaterial.prototype.copy = function ( source ) {
 	this.lightMapIntensity = source.lightMapIntensity;
 
 	this.aoMap = source.aoMap;
+	this.ssaoMap = source.ssaoMap;
 	this.aoMapIntensity = source.aoMapIntensity;
 
 	this.emissive.copy( source.emissive );
