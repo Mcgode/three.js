@@ -160,6 +160,8 @@ function WebGLRenderer( parameters ) {
 
 	const _emptyScene = { background: null, fog: null, environment: null, overrideMaterial: null, isScene: true };
 
+	const _resolution = new Vector2();
+
 	function getTargetPixelRatio() {
 
 		return _currentRenderTarget === null ? _pixelRatio : 1;
@@ -1685,6 +1687,12 @@ function WebGLRenderer( parameters ) {
 		p_uniforms.setValue( _gl, 'modelViewMatrix', object.modelViewMatrix );
 		p_uniforms.setValue( _gl, 'normalMatrix', object.normalMatrix );
 		p_uniforms.setValue( _gl, 'modelMatrix', object.matrixWorld );
+
+		if ( _currentRenderTarget )
+			_resolution.set( _currentRenderTarget.width, _currentRenderTarget.height );
+		else
+			_resolution.set( _width, _height );
+		p_uniforms.setValue( _gl, 'renderSize', _resolution );
 
 		return program;
 
